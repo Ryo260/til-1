@@ -13,6 +13,25 @@
     <!-- BootstrapのCSS読み込み -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+  
+  <style>
+body {
+    animation: fadeIn 2s ease 0s 1 normal;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+
+@-webkit-keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+</style>
+
+
+
   </head>
   
   <body>
@@ -20,7 +39,7 @@
   <!-- ====================▼ヘッダ====================-->
   <header style="background-color:gray;">header</header>
   <!-- ====================ヘッダ▲====================-->
-  
+    
   <!-- ====================▼出力条件入力部====================-->
   <div class="container" style="margin-top:15px; margin-bottom:10px; width:320px;">
     <div class="row">
@@ -179,4 +198,6 @@ class Generator {
   </script>
     
   </body>
+  
+
 </html>
