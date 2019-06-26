@@ -95,6 +95,87 @@
     
     let test = new Person('hoge');
     test.greet();
+    
+    // =====
+
+/**
+ * 配列宣言の名前空間.
+ */
+const NS_ARR_DECLEAR = {
+  JS_START : 'let arr = [',
+  JS_END : '];',
+}
+
+/**
+ * Builder.
+ */
+class Builder {
+  constructor(str) {
+    this.str = str;
+  }
+  add(text){
+    this.str = this.str + text;
+  }
+  export(){
+    return this.str;
+  }
+}
+
+/**
+ * 配列生成用クラス.
+ */
+class Generator {
+  
+  constructor(pgmLang, dataCount, enableDupl) {
+    this.pgmLang = pgmLang;         // プログラム言語
+    this.dataCount = dataCount;     // データ件数
+    this.enableDupl = enableDupl;   // 重複を許すかどうか
+  }
+  
+  generateCode(){
+
+    let builder = new Builder('');
+
+    if (this.pgmLang === 'javascript') {
+      builder.add(NS_ARR_DECLEAR.JS_START);
+    } else if (this.pgmLang === 'python'){
+      // TODO: Python 対応予定
+    }
+    
+    // コードの生成
+    let arr = this.generateArray();
+    for (let i = 0; i < arr.length; i++) {
+      builder.add(arr[i]);
+      if (i != arr.length - 1) {
+        // 配列末尾に到達するまで、区切り文字を追加
+        builder.add(',');
+      }
+    }
+    
+    if (this.pgmLang === 'javascript') {
+      builder.add(NS_ARR_DECLEAR.JS_END);
+    } else if (this.pgmLang === 'python'){
+      // TODO: Python 対応予定
+    }
+    
+    // 生成したコードを返却
+    return builder.export();
+  }
+  
+  generateArray(){
+    let arr = [];
+    for (let i = 0; i < this.dataCount; i++){
+      // 0～データ件数を持つ配列を作成
+      arr.push(i);
+    }
+    
+    // 作成した配列をシャッフルして返却
+    return _.shuffle(arr);
+  }
+}
+
+    // =====
+    
   </script>
     
   </body>
