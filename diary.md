@@ -128,3 +128,46 @@ for (String parentKey:map.keySet()){
  複数のロジックを実行する関数(Service)の場合、  
  「関数を実行する」という責任は持つが、「正しい関数の出力結果を出す」責任は持たない。  
  
+# 2019/7/6
+## python備忘
+1. オブジェクト参照の挙動
+```python
+a = 9
+b = a
+a = 3
+print(b)
+```
+2. 文字と演算
+```python
+start = 'Hoge\t' * 4 + '\n'
+end = 'Foo\t' * 3 + '\n'
+print(start + end)
+```
+
+3. スライシング
+```python
+N = '0123456789abcdef'
+
+print(N[::2])
+print(N[-1::-1])
+print(N[:12:])
+```
+4. 文字列操作
+```python
+todos = 'get gloves,get mask,give cat vitamins,call ambulance'
+todos_splited = todos.split(',')
+todos_joined = ', '.join(todos_splited)
+```
+5. その他の文字列操作
+```python
+X = 'abcdedcbab'
+
+X[:3]
+len(X)
+X.startswith('a')
+X.endswith('b')
+X.find('ab')
+X.rfind('ab') # 最後に登場
+X.count('ab')
+X.isalnum() # すべて数値か
+```
