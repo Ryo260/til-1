@@ -232,3 +232,55 @@ for s in pitching:
         call = 'fourball!' if count_ball == 4 else s+'!'
     print(call)
 ```
+# 2019/7/8
+## バグ調査
+* 以下の点を明確にする
+  * 内容
+  * 検出の経緯
+  * 影響
+  * 原因
+  * あるべき姿
+  * 対応に必要な作業
+  * 対応に必要な工数
+## 進め方
+* 常に「他人への引き継ぎ」を意識した資料を用意しておく
+## テスト実施
+* 再テストの考え方：  
+ * 全ステップ再実施
+ * 前段のステップから再実施  
+ ⇒根拠が必要
+## 情報の連携
+* なるべく「データ」⇒「情報」へ精度を上げてから伝えるよう心掛ける
+
+## python
+```python
+# coding: utf-8
+
+N = int(input())
+numbers = []
+for i in range(0,N):
+    numbers.append(int(input()))
+
+def get_divisor_sum(num):
+    temp = []
+    for i in range(1, num+1):
+        if num % i == 0:
+            temp.append(i)
+    result = 0
+    for j in temp:
+        result += j
+    return result
+
+def get_judge_result(num):
+    divisor_sum = get_divisor_sum(num)
+    S = divisor_sum - num
+    if S == num:
+        return 'perfect'
+    elif abs(num - S) == 1:
+        return 'nearly'
+    else:
+        return 'neither'
+
+for num in numbers:
+    print(get_judge_result(num))
+```
