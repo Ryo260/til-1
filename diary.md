@@ -253,6 +253,7 @@ for s in pitching:
 * なるべく「データ」⇒「情報」へ精度を上げてから伝えるよう心掛ける
 
 ## python
+1. 約数求めたり
 ```python
 # coding: utf-8
 
@@ -283,4 +284,28 @@ def get_judge_result(num):
 
 for num in numbers:
     print(get_judge_result(num))
+```
+2. 内包表記の利用(リストの宣言と型変換を同時に行う)
+```python
+# coding: utf-8
+
+set_1_1 = [int(num)-1 for num in input().split()]
+set_1_2 = [int(num)-1 for num in input().split()]
+
+# 1回戦
+time_1 = [int(num) for num in input().split()]
+winner_1_1 = set_1_1[0] if time_1[set_1_1[0]] < time_1[set_1_1[1]] else set_1_1[1]
+winner_1_2 = set_1_2[0] if time_1[set_1_2[0]] < time_1[set_1_2[1]] else set_1_2[1]
+
+# 2回戦
+time_2 = [int(num) for num in input().split()]
+set_2 = sorted(num + 1 for num in [winner_1_1, winner_1_2])
+
+# 結果
+if (time_2[0] < time_2[1]):
+    print(set_2[0])
+    print(set_2[1])
+else:
+    print(set_2[1])
+    print(set_2[0])
 ```
