@@ -171,3 +171,64 @@ X.rfind('ab') # 最後に登場
 X.count('ab')
 X.isalnum() # すべて数値か
 ```
+# 2019/7/7
+## python
+1. 改行せずにprint()関数を使用する
+```python
+N = int(input())
+
+for i in range(0, N):
+  # 第二引数でオプションを渡せる。endは出力文字列の末尾を指定できる
+  # デフォルトが'\n'らしい
+  print('*', end='')
+print('\n')
+```
+2. リスト内包表記と辞書からの抽出オプション
+```python
+# coding: utf-8
+
+word = input()
+
+leet_map = {
+    'A':'4',
+    'E':'3',
+    'G':'6',
+    'I':'1',
+    'O':'0',
+    'S':'5',
+    'Z':'2',
+}
+
+def convert2Leet(arg, leet_map):
+    result = ''
+    # [返却値 for リストの一要素 in リスト]
+    # get(キー, <キーがない場合の値>)
+
+    for s in [leet_map.get(s,s) for s in arg]:
+        result += s
+    return result;
+
+print(convert2Leet(word, leet_map))
+```
+3. 複数行の標準入力取得と３項演算子
+```python
+# coding: utf-8
+
+N = int(input())
+pitching = []
+for i in range(0, N):
+    pitching.append(input())
+
+count_strike = 0
+count_ball = 0
+
+for s in pitching:
+    call = ''
+    if s == 'strike':
+        count_strike += 1
+        call = 'out!' if count_strike == 3 else s+'!' 
+    if s == 'ball':
+        count_ball += 1
+        call = 'fourball!' if count_ball == 4 else s+'!'
+    print(call)
+```
