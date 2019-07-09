@@ -7,6 +7,9 @@
         * ブートローダのインストール先に注意。今回はSSDを指定した
     * python3.7  
     https://www.sejuku.net/blog/83204
+    * Let's Noteで輝度調整ができなくなる問題への対応  
+    https://www.kinacon-blog.work/entry/2018/07/29/081812
+      * [acpi_backlight=vendor acpi_osi=] をGRUB_CMDLINE_LINUX_DEFAULTに追記する
 ## Linux
 * ターミナル起動：Ctrl+Alt+T
 * ls カレントディレクトリ一覧
