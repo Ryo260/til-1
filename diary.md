@@ -9,6 +9,8 @@
     https://www.sejuku.net/blog/83204
 ## Linux
 * ターミナル起動：Ctrl+Alt+T
+* ls カレントディレクトリ一覧
+* mkdir フォルダ作成
 
 # 2019/7/9
 ## 統計
