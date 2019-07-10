@@ -12,7 +12,7 @@
       * [acpi_backlight=vendor acpi_osi=] をGRUB_CMDLINE_LINUX_DEFAULTに追記する
 ## Linux
 * ターミナル起動：Ctrl+Alt+T
-* ls カレントディレクトリ一覧
+* ls カレントディレクトリの中身を一覧表示する(dir)
 * mkdir フォルダ作成
 ## javascript
 1. jQuery無しでページ読み込み時の処理を実装  
