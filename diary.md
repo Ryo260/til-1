@@ -15,10 +15,11 @@ sudo apt install python-pip
    ```
    2. システム用(rootのみアクセス可能)
    ```
-   pip install <module name>
+   sudo pip install <module name>
    ```
 * pipでインストールした機能はパスを通す必要がありそう  
-※virtualenvが使えない 
+※virtualenvが使えない → スーパーユーザ以外の権限でpipインストールをすると環境変数が自動設定されない模様  
+→ ちなみにwhich 変数名 で、環境変数の設定内容を調べられる
 
 パスの設定は以下を参考  
 https://bi.biopapyrus.jp/os/linux/path.html  
