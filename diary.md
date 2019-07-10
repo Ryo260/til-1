@@ -17,6 +17,11 @@ sudo apt install python-pip
    ```
    pip install <module name>
    ```
+* pipでインストールした機能はパスを通す必要がありそう  
+※virtualenvが使えない 
+
+パスの設定は以下を参考  
+https://bi.biopapyrus.jp/os/linux/path.html  
    
 
 # 2019/7/10-python週次
