@@ -23,6 +23,12 @@ sudo apt install python-pip
 
 パスの設定は以下を参考  
 https://bi.biopapyrus.jp/os/linux/path.html  
+* virtualenv環境でpipインストールしたdjangoが見つからない  
+→ pipのバージョンは3.6だが、pythonは3.7  
+python3 -m django --versionはpython3.7にインストールされたモジュールを参照する  
+python -m django --versionはvirtualenv環境のpythonバージョンにインストールされたモジュールを参照する  
+※virtualenv -p python3.6 <環境名>  
+pipでインストールしているのは後者のパスであるため、python3コマンドでは参照できなかった
    
 
 # 2019/7/10-python週次
