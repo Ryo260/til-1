@@ -1,3 +1,24 @@
+# 2019/7/11
+## Linux
+* pipのインストール
+```
+sudo apt install python-pip
+```
+   * 注意点：  
+   aptでインストールしたpipをpip自身でupgradeするとモジュールが読み込めなくなる  
+   [参考]https://laboradian.com/cannot-import-name-main-when-upgrading-pip/#i-2  
+   定期的にapt updateしてapt install python-pipすることで更新を行うこと  
+   また、pipでモジュールをインストールする場合は以下のようにする  
+   1. ユーザー用  
+   ```
+   pip install --user <module name>
+   ```
+   2. システム用(rootのみアクセス可能)
+   ```
+   pip install <module name>
+   ```
+   
+
 # 2019/7/10-python週次
 # 命名規則について
 * モジュール名 = ファイル名
