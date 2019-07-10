@@ -26,6 +26,14 @@ document.addEventListener('DOMContentLoaded', function() {
 ### ブレークポイントに条件を付けることができる。  
 * 参考  
 https://www.hitachi.co.jp/Prod/comp/soft1/cosminexus/useful/tips/090107_eclipse-breakpoint.html
+## エディタ
+### Vim
+* kaoriyaのWindows用Vim
+   * hjkl ←↓→↑
+   * w 次の単語の先頭へ b 前の単語の先頭へ e 今の単語、次の単語の末尾へ
+### EMacs
+* GNU EMacsのサイズが大きいのでダウンロードできなかった
+
 # 2019/7/9
 ## 統計
 ### 統計のフロー
