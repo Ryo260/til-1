@@ -3,12 +3,16 @@
 * フォルダ削除
 ```
 $ rmdir <file name>
-rmdir <file name> --ignore-fail-on-non-empty
+$ rmdir <file name> --ignore-fail-on-non-empty
 ```
 * 大体のことはhelpオプションでなんとかなる
 ```
 <command> --help
 ```
+## Docker
+* Linuxカーネル上で動くので、Windowsより導入が楽そう  
+※そもそもWindows10はProじゃないと結局VMクライアント使うことになって重い
+
 
 
 # 2019/7/12
