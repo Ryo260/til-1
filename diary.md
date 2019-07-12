@@ -1,3 +1,16 @@
+# 2019/7/13
+## Linux
+* フォルダ削除
+```
+$ rmdir <file name>
+rmdir <file name> --ignore-fail-on-non-empty
+```
+* 大体のことはhelpオプションでなんとかなる
+```
+<command> --help
+```
+
+
 # 2019/7/12
 ## チーム開発
 * リリース資材の確認  
