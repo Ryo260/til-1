@@ -12,9 +12,22 @@ $ rm -r <name>
 ```
 $ <command> --help
 ```
-* 相対パスでテキストを開く(ssh key)  
+* homeからの相対パス指定(例:ssh keyをcatで参照する)  
 ```
 $ cat ~/.ssh/id_rsa.pub
+```
+* ファイルの移動
+```
+$ mv <before> <after>
+```
+* VSCodeインストール
+```
+# curlでdebパッケージをダウンロード
+$ curl -L https://go.microsoft.com/fwlink/?LinkID=760868 -o vscode.dev
+# debパッケージからインストール実行
+$ sudo apt install ./vscode.deb
+# VSCode呼び出し
+$ code
 ```
 ## Docker
 * Linuxカーネル上で動くので、Windowsより導入が楽そう  
