@@ -7,7 +7,11 @@ $ rmdir <file name> --ignore-fail-on-non-empty
 ```
 * 大体のことはhelpオプションでなんとかなる
 ```
-<command> --help
+$ <command> --help
+```
+* 相対パスでテキストを開く(ssh key)  
+```
+$ cat ~/.ssh/id_rsa.pub
 ```
 ## Docker
 * Linuxカーネル上で動くので、Windowsより導入が楽そう  
