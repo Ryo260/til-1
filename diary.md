@@ -1,11 +1,26 @@
 # 2019/7/13
+
+## python
+* pip
+ * 2.xと3.xが共存している環境ではpip3を使う
+ ```
+ $ # インストール済のパッケージ一覧
+ $ pip3 list # 非推奨？
+ $ pip3 freeze # listと何が違う？
+ ```
+* なお、sudo pip3したパッケージは消す時もsudoしなければダメ
+```
+$ # 例
+$ sudo pip3 uninstall django
+```
+
 ## Linux
 * ファイル・フォルダ削除
 ```
-# ディレクトリ内にファイルがあると削除不可のフォルダ削除
+$ # ディレクトリ内にファイルがあると削除不可のフォルダ削除
 $ rmdir <name>
 $ rmdir <name> --ignore-fail-on-non-empty
-# ファイル・フォルダ削除
+$ # ファイル・フォルダ削除
 $ rm -r <name>
 ```
 * 大体のことはhelpオプションでなんとかなる
@@ -22,11 +37,11 @@ $ mv <before> <after>
 ```
 * VSCodeインストール
 ```
-# curlでdebパッケージをダウンロード
+$ # curlでdebパッケージをダウンロード
 $ curl -L https://go.microsoft.com/fwlink/?LinkID=760868 -o vscode.dev
-# debパッケージからインストール実行
+$ # debパッケージからインストール実行
 $ sudo apt install ./vscode.deb
-# VSCode呼び出し
+$ # VSCode呼び出し
 $ code
 ```
 ## Docker
