@@ -1,9 +1,12 @@
 # 2019/7/13
 ## Linux
-* フォルダ削除
+* ファイル・フォルダ削除
 ```
-$ rmdir <file name>
-$ rmdir <file name> --ignore-fail-on-non-empty
+# ディレクトリ内にファイルがあると削除不可のフォルダ削除
+$ rmdir <name>
+$ rmdir <name> --ignore-fail-on-non-empty
+# ファイル・フォルダ削除
+$ rm -r <name>
 ```
 * 大体のことはhelpオプションでなんとかなる
 ```
