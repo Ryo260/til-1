@@ -15,6 +15,47 @@ $ # 例
 $ sudo pip3 uninstall django
 ```
 
+```python
+# coding: utf-8
+
+def debug(prop, x):
+    print('[debug] ' + prop + ' = ' + str(x))
+    # print(str(x))    
+
+def conv_to_array(arg):
+    return [int(value) for value in arg]
+
+def get_even(arr):
+    debug('get_even_arr', [num*2 if (num*2 < 10) else (1 + (num*2)%10) for num in arr])
+    return [num*2 if (num*2 < 10) else (1 + (num*2)%10) for num in arr]
+        
+def get_first_digit(numbers):
+    # debug('numbers', conv_to_array(numbers[0:15:]))
+
+    even = sum(get_even(conv_to_array(numbers[0:15:2])))
+    # debug('for_even', conv_to_array(numbers[0:15:2]))
+    debug('even', even)
+    odd = sum(conv_to_array(numbers[1:15:2]))
+    # debug('for_odd', conv_to_array(numbers[1:15:2]))
+    # debug('odd', odd)
+    hoge = even + odd
+    # debug('hoge',hoge)
+    
+    X = 10 - (even + odd)%10
+    
+    return X
+
+N = int(input())
+"""
+for i in range(0, N):
+    print(get_first_digit(input())
+"""
+# debug('N', N)
+for i in range(0, N):
+    debug('i',i)
+    debug('X',get_first_digit(input()))
+```
+
 ## Linux
 * ファイル・フォルダ削除
 ```
