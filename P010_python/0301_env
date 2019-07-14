@@ -1,0 +1,17 @@
+* VSCodeでvenv環境のソースを開くとエラー表示  
+参考：https://qiita.com/thatbin/items/2de0a0c1ea21af10f6e3  
+→ venv起動してから、同じターミナルでVSCodeを起動する必要がある。("code")
+
+* pip
+ * 2.xと3.xが共存している環境ではpip3を使う  
+ ※ そもそも、インストール先となるディレクトリが違う模様
+ ```
+ $ # インストール済のパッケージ一覧
+ $ pip3 list # 非推奨？
+ $ pip3 freeze # listと何が違う？
+ ```
+* なお、sudo pip3したパッケージは消す時もsudoしなければダメ
+```
+$ # 例
+$ sudo pip3 uninstall django
+```
