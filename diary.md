@@ -1,4 +1,8 @@
 # 2019/7/14
+## python
+* VSCodeでvenv環境のソースを開くとエラー表示  
+参考：https://qiita.com/thatbin/items/2de0a0c1ea21af10f6e3  
+→ venv起動してから、同じターミナルでVSCodeを起動する必要がある。("code")
 
 # 2019/7/13
 
