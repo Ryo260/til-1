@@ -1,4 +1,9 @@
 # 2019/7/16
+## フロント
+* 参考  
+https://qiita.com/yanda/items/3a99891f03e9e84ceed8
+* BEM:フロントエンドにおける命名規則の一種らしい  
+https://frasco.io/5-reasons-to-use-bem-f5ca38f748a1
 ## django
 ### 実装
 * function based view　と　class based view
