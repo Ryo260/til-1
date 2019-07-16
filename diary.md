@@ -4,6 +4,25 @@
 https://qiita.com/yanda/items/3a99891f03e9e84ceed8
 * BEM:フロントエンドにおける命名規則の一種らしい  
 https://frasco.io/5-reasons-to-use-bem-f5ca38f748a1
+
+## javascript
+* 連想配列の追加  
+配列のpush()みたいな関数はないため注意
+```javascript
+let dict = {};
+dict[key] = value;
+// または
+dict.key = value;
+```
+* length()とlength
+```
+// 文字列の長さは関数
+str.length();
+// 配列の長さはプロパティ
+arr.length;
+```
+
+
 ## django
 ### 実装
 * function based view　と　class based view
