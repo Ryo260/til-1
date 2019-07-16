@@ -1,4 +1,12 @@
 # 2019/7/17
+## 業務
+###  目標
+1. 目的を伝える→本題に入るの流れを徹底する  
+2. デザインパターン 「**ほげ**」の理解と実装  
+※MD __ ** で囲むと太字になる
+* DP学習進捗
+1. Builder_20190716
+
 ## django
 * virtualenvおさらい
 ```shell
@@ -25,6 +33,11 @@ $ django-admin startproject .
   ・urlpatternsでinclude('app.urls')
       
 # 2019/7/16
+## 業務
+###  目標
+1. 会話の目的を明確にし、意識する  
+2. デザインパターン「Builder」の理解と実装
+
 ## Java
 ### Builderパターンについて
 [参考]https://qiita.com/takutotacos/items/33cfda205ab30a43b0b1
@@ -166,7 +179,3 @@ appを取りまとめるのがprojectのsettings.py
 ```
 $ touch <file name>  
 ```
-## 業務
-###  目標
-1. 会話の目的を明確にし、意識する  
-2. デザインパターン「Builder」の理解と実装
