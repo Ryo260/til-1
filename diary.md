@@ -75,7 +75,7 @@ class Hoge {
 * 呼び出しは以下
 ```java:Main.java
 // Builder経由でインスタンスを生成する
-Hoge hoge = new Hoge.Builder(1, 2).arg6(6)build();
+Hoge hoge = new Hoge.Builder(1, 2).arg6(6).build();
 
 // これにより、arg1, arg2, arg6がセットされたHogeインスタンスが生成される
 ```
