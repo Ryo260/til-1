@@ -1,3 +1,29 @@
+# 2019/7/17
+## django
+* virtualenvおさらい
+```shell
+$ virtualenv <env name>
+```
+* django startprojectおさらい
+```
+$ # 普通にprojectを作成(カレントディレクトリにフォルダを作り、その中にprojectとmanage.pyができる)
+$ django-admin startproject
+
+$ # オプションで"."を指定→カレントディレクトリにprojectとmanage.pyをつくる
+$ django-admin startproject .
+```
+* アプリ作成の流れ
+1. starapp app
+2. project/settings.pyで以下を追記  
+  ・TEMPLATES  
+  ・INSTALLED_APPS
+3. app配下にurls.pyを作成
+  ※ちなみにデフォでファイルが無いのは、  
+  djangoが当初すべてのリクエストをprojectのurls.pyで受け取る思想だったから。
+4. projct/urls.pyで以下を追記
+  ・include import
+  ・urlpatternsでinclude('app.urls')
+      
 # 2019/7/16
 ## Java
 ### Builderパターンについて
