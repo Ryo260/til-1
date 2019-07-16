@@ -1,4 +1,94 @@
 # 2019/7/16
+## Java
+### Builderパターンについて
+[参考]https://qiita.com/takutotacos/items/33cfda205ab30a43b0b1
+
+1. 目的
+以下のような、複数のプロパティを持ちコンストラクタ引数で初期化するクラスがあるとする。
+```java
+class Hoge(){
+    public Hoge(int arg1, int arg2, int arg3, int arg4, int arg5, int arg6){
+        this.arg1 = arg1;
+        this.arg2 = arg2;
+        // ...
+    }
+}
+```
+このようなクラスは、以下の問題を抱えている。  
+1. 引数の数が多く、順番を間違えやすい。
+2. 必須ではない引数(特定のインスタンスでのみ使用するプロパティ)に対して、  
+以下のように何かしらの値を渡さなければならない。  
+```java
+// arg3, arg4を使わない場合でもnullか何かは設定する必要がある
+public Hoge hoge = new Hoge(1, 2, null, null, 5, 6);
+```
+
+そこで、
+* コンストラクタの引数は必須項目のみ
+* 任意項目は「値をセットした自分自身のインスタンスを返却する」メソッドを用意する  
+というクラスを作る。以下例。
+```java:Hoge.java
+// arg1, arg2が必須でそれ以外は任意
+class Hoge {
+    // 内部クラスでBuilderを定義
+    class Builder{
+        public Builder(arg1, arg2){
+            // 必須項目にnullが設定されている場合は例外をスロー
+            if (arg1 == null || arg2 == null) {
+                throw new NullPointerException();
+            }
+            this.arg1 = arg1;
+            this.arg2 = arg2;
+        }
+        
+        /**
+         * 任意項目の値を設定
+         */
+         public Hoge arg3(arg3){
+            this arg3 = arg3;
+            return this;
+         }
+         
+         public Hoge arg4(arg4){
+            ...
+         }
+         // ...以下同じ
+         
+         public Hoge arg6(arg6){
+            //...
+            return this;
+         }
+         
+        /*
+         * 値が設定されたBuilderからHogeインスタンスを生成
+         /
+        Hoge build(){
+            if (arg1 == null || arg2 == null) {
+                throw new NullPointerException();
+            }
+            // Builderを受け取って値をセットするコンストラクタ
+            return new Hoge(this);
+        }
+    }
+}
+```
+* 呼び出しは以下
+```java:Main.java
+// Builder経由でインスタンスを生成する
+Hoge hoge = new Hoge.Builder(1, 2).arg6(6)build();
+
+// これにより、arg1, arg2, arg6がセットされたHogeインスタンスが生成される
+```
+
+* Builderパターンが適している例
+1. 必須項目が少ない
+2. 任意項目を含めると引数が多い
+3. 同じクラスの複数インスタンスを使いたい
+
+* Builderパターンが適さない例
+1. 全て必須項目(コンストラクタから分離する意味なし)
+2. 項目が大量(大量のBuilder用メソッドをチェーンするため意味なし)
+
 ## フロント
 * 参考  
 https://qiita.com/yanda/items/3a99891f03e9e84ceed8
@@ -24,9 +114,9 @@ arr.length;
 
 ## django
 ### 実装
-* function based view　と　class based view
+* function based view　と　class based view  
 前者の方が細かい制御が可能な分実装が大変  
-後者の方が楽に実装できる分ブラックボックス
+後者の方が楽に実装できる分ブラックボックス  
 
 * setings.pyのBASE_DIRについて
   * os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
