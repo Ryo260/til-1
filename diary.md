@@ -22,7 +22,6 @@ str.length();
 arr.length;
 ```
 
-
 ## django
 ### 実装
 * function based view　と　class based view
