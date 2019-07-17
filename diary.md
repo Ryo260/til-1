@@ -3,9 +3,133 @@
 ###  目標
 1. 目的を伝える→本題に入るの流れを徹底する  
 2. デザインパターン 「**Abstract Factory**」の理解と実装  
-※MD __ ** で囲むと太字になる
+
 * DP学習進捗
 1. Builder_20190716
+
+## Java
+### Abstract Factoryパターン
+#### 概要
+
+1. 通常のJavaアプリケーション  
+利用したいコンポーネントのインスタンスを得るためのコードが、  
+アプリケーション本体(MyApp)に記載されている。
+```java
+
+class MyApp {
+    /**
+     * 本処理
+     */
+    public void execute(){
+        Hoge hoge = new Hoge(1);
+        Foo foo = new Foo(2);
+    }
+}
+
+class Hoge {
+    public Hoge(int arg) {
+        this.arg = arg;
+    }
+}
+
+class Foo {
+    public Hoge(int arg) {
+        this.arg = arg;
+    }
+}
+
+```
+
+2. Factoryパターンを使用した場合  
+Factoryクラスのメソッド経由でインスタンスを得る。  
+これにより、インスタンスの作成がアプリ本体から分離されるため、  
+例えばインスタンスの生成方法が変わってもFactoryクラスを改修するだけで良くなる。
+```java
+class MyApp {
+    
+    /**
+     * 本処理
+     */
+     public void execute() {
+        Factory f = new Factory();
+        Hoge hoge = f.creageHoge();
+        Foo fo = f.createFoo();
+     }
+}
+
+class Factory {
+    public Hoge createHoge() {
+        return new Hoge();
+    }
+    
+    public Foo createFoo() {
+        return new Foo();
+    }
+}
+```
+3. Abstract Factoryパターンを利用した場合  
+Factoryを抽象クラスにする。
+これにより、いろんな種類のHogeやFoo作成用Factoryを定義することができる。
+(Factoryの具象クラスで各々の振る舞いを実装できるため、  
+コンポーネントの動的な切替や差し替えが可能になる)
+```java
+class MyApp {
+    
+    /**
+     * 本処理
+     */
+     public void execute(String flag) {
+        if (flag == "X") {
+            Factory f = new FactoryX();
+        } else if (flag == "Y") {
+            Factory f = new FactoryY();
+        }
+        this.execute(f);
+     }
+     
+     // 動的にコンポーネントが定義されたFactoryで処理を実行
+     private void execute(Factory f) {
+        Hoge hoge = f.createHoge();
+        Foo foo = f.createFoo();
+     }
+}
+
+// Factory抽象クラス
+abstract class Factory {
+    abstract public Hoge createHoge();
+    abstract public Foo createFoo();
+}
+
+// フラグが"X"の場合用コンポーネント生成Factory具象クラス
+class FactoryX extends Factory {
+    public Hoge createHoge() {
+        return new Hoge("X");
+    }
+    public Foo createFoo() {
+        return new Foo("X");
+    }
+} 
+
+// フラグが"Y"の場合用コンポーネント生成Factory具象クラス
+class FactoryY extends Factory {
+    public Hoge createHoge() {
+        return new Hoge("Y");
+    }
+    public Foo createFoo() {
+        return new Foo("Y");
+    }
+} 
+
+```
+
+#### 利点
+* 主処理におけるコンポーネント差し替えが容易であるため、  
+例えばデバッグ用のコンポーネントを手元で作ってFacotry経由で呼び出すといったことが可能になる。
+
+* Factory毎にコンポーネントの組み合わせ及び振る舞いを定義しているため、  
+たとえば本来flag=="X"用のインスタンスを使うべきところでFoo("Y")してしまう、  
+といった間違いが起こらなくなる。  
+(常にflag=="X"用、"Y"用のコンポーネントを利用できていることが分かりやすくなる。
 
 ## django
 * virtualenvおさらい
@@ -42,7 +166,7 @@ $ django-admin startproject .
 ### Builderパターンについて
 [参考]https://qiita.com/takutotacos/items/33cfda205ab30a43b0b1
 
-1. 目的  
+#### 概要  
 以下のような、複数のプロパティを持ちコンストラクタ引数で初期化するクラスがあるとする。
 ```java
 class Hoge(){
@@ -127,6 +251,10 @@ Hoge hoge = new Hoge.Builder(1, 2).arg6(6).build();
 * Builderパターンが適さない例
 1. 全て必須項目(コンストラクタから分離する意味なし)
 2. 項目が大量(大量のBuilder用メソッドをチェーンするため意味なし)
+
+#### 利点
+* 引数が多いインスタンス生成の見通しが良くなる
+* どの引数をインスタンス生成時に渡しているのかが分かりやすくなる
 
 ## フロント
 * 参考  
