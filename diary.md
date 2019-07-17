@@ -16,25 +16,26 @@
 利用したいコンポーネントのインスタンスを得るためのコードが、  
 アプリケーション本体(MyApp)に記載されている。
 ```java
-
+// "A"を"B"にしたい場合、MyAppを編集しなければならない
+// アプリケーションの実行系を直接触るのはいろいろやだ
 class MyApp {
     /**
      * 本処理
      */
     public void execute(){
-        Hoge hoge = new Hoge(1);
-        Foo foo = new Foo(2);
+        Hoge hoge = new Hoge("A");
+        Foo foo = new Foo("A");
     }
 }
 
 class Hoge {
-    public Hoge(int arg) {
+    public Hoge(String arg) {
         this.arg = arg;
     }
 }
 
 class Foo {
-    public Hoge(int arg) {
+    public Hoge(String arg) {
         this.arg = arg;
     }
 }
@@ -58,13 +59,14 @@ class MyApp {
      }
 }
 
+// "A"を"B"にしたいときでも、MyAppは触らなくてよい
 class Factory {
     public Hoge createHoge() {
-        return new Hoge();
+        return new Hoge("A");
     }
     
     public Foo createFoo() {
-        return new Foo();
+        return new Foo("A");
     }
 }
 ```
