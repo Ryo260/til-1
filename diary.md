@@ -8,7 +8,8 @@
 1. Builder_20190716
 
 ## Java
-### Abstract Factoryパターン
+### Abstract Factoryパターンについて
+[参考]https://qiita.com/morimotof/items/67a9e2a8d7e15ea321d2
 #### 概要
 
 1. 通常のJavaアプリケーション  
