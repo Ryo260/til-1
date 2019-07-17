@@ -227,7 +227,7 @@ class Hoge {
          
         /*
          * 値が設定されたBuilderからHogeインスタンスを生成
-         /
+         */
         Hoge build(){
             if (arg1 == null || arg2 == null) {
                 throw new NullPointerException();
