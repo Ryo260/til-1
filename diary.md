@@ -8,6 +8,10 @@
 1. Builder_20190716
 2. Abstract Factory_20190717
 
+## Java
+### Adapterパターンについて  
+[参考]https://qiita.com/shoheiyokoyama/items/bd1c692db480b640c976
+
 
 # 2019/7/18
 ## 休み
