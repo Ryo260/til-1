@@ -12,6 +12,87 @@
 ## Java
 ### Adapterパターンについて  
 [参考]https://qiita.com/shoheiyokoyama/items/bd1c692db480b640c976
+* 別名「Wrapper」パターン
+* interface間の違いを吸収する。
+* 継承を利用するパターン／委譲を利用するパターンで２つの実現方法がある。
+
+### 概要  
+* 継承を利用するパターンにて説明(委譲も大した変わらないので最後に記載)
+1. MyAppからクラスの機能を使いたい
+```java
+class MyApp {
+    public void execute(){
+        Hote hoge = new Hoge();
+        // Hogeクラスの機能
+        hoge.doHoge();
+    }
+}
+```
+```java
+class Hoge {
+    public void doHoge(){};
+}
+```
+2. ここで、HogeクラスからdoFuga()というメソッドを使いたくなった。
+```java
+class MyApp {
+    public void execute(){
+        Hote hoge = new Hoge();
+        // Hogeクラスの機能
+        // hoge.doHoge();
+        hoge.doFuga(); 
+    }
+}
+```
+3. しかし、HogeクラスのinterfaceにdoFuga()は存在しない。  
+このとき、最も単純に解決するならば以下の様になる。
+```java
+class Hoge {
+    public void doHoge(){};
+    public void doFuga(){}; // doFugaを新しく追加する
+}
+```
+4. 上記の例には問題がある。  
+doFuga()を追加したことにより、Hogeクラスそのものを触ってしまったため  
+__「Hogeクラス自体の全機能について再テストが必要」__ となってしまった。  
+
+5. では、Hogeクラスを拡張して使いたいがHogeクラスを直接修正したくない場合はどうすれば良いかを考える。  
+```java
+class HogeAdapter extends Hoge implements IFuga{
+    // Hogeの拡張クラスへdoFugaするinterfaceをimplementsする
+    @Override
+    public void doFuga(){};
+}
+```
+```java
+interface IFuga {
+    // doFugaする機能を持ったインターフェース
+    void doFuga();
+}
+```
+6. こうすることで、既存機能へ影響を与えることなく、  
+MyAppにて新たに必要となったHogeクラス機能としてのFugaを追加するという拡張が可能となる。  
+  
+◆利点:  
+* Hogeの再テストが不要
+* Fugaを実装したことでバグが発生しても、Hogeクラスではバグが発生していないことが保証される
+
+なお、IFugaをimplementsしたHogeAdapterを使うのが「継承を使用するパターン」で、  
+doFuga()するFugaクラスを作成してHogeAdapterから呼び出すのが「委譲を使用するパターン」
+```java
+class HogeAdapter extends Hoge {
+
+    // Fugaクラスの処理をHogeAdapterへ委譲
+    Fuga fuga = new Fuga();
+    fuga.doFuga();
+}
+```
+```java
+class Fuga {
+    public doFuga(){};
+}
+```
+
 
 
 # 2019/7/18
