@@ -7,6 +7,27 @@
 <form action="" method="POST"> {% csrf_token %}
 </form>
 ```
+* submit後のリダイレクトを設定していなければえらー
+```python
+# viewsで指定
+
+class HogeView(CreateView):
+    # ...
+    success = reverse_lazy('')
+
+```
+* reverseについて
+URLを「逆回り」する。  
+通常はurls→viewsと関連付けて通信を行うが、  
+逆回りではviewsからurlに紐づけて通信を行う。(厳密にいえばviews→urls→views)  
+
+```python
+from django.urls import reverse, reverse_lazy()
+
+# class based viewでは reverse()を使用する
+# function_based_viewでは reverse_lazy()を使用する
+
+```
 ## bootstrap4
 * 
 
