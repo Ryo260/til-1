@@ -13,7 +13,7 @@
 
 class HogeView(CreateView):
     # ...
-    success = reverse_lazy('')
+    success_url = reverse_lazy('')
 
 ```
 * reverseについて
