@@ -22,11 +22,22 @@ URLを「逆回り」する。
 逆回りではviewsからurlに紐づけて通信を行う。(厳密にいえばviews→urls→views)  
 
 ```python
+# // views.py
 from django.urls import reverse, reverse_lazy()
+
+class HogeView(CreateView):
+    success = reverse_lazy('top')
 
 # class based viewでは reverse()を使用する
 # function_based_viewでは reverse_lazy()を使用する
 
+```
+```python
+# // urls.py
+urlpatterns = [
+    # path()の引数で指定したnameへreverseされる
+    path('top/', TopView.as_view(), name='top')
+]
 ```
 ## bootstrap4
 * 
