@@ -1,4 +1,15 @@
 # 2019/7/20
+
+## django
+* CSRF(クロスサイトリクエストフォージェリ)対策をしていなければエラー
+```html
+<!--慣例としてform要素の右に記述 -->
+<form action="" method="POST"> {% csrf_token %}
+</form>
+```
+## bootstrap4
+* 
+
 ## エディタ
 ### VSCode
 * コード整形(Linux)
