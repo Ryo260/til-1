@@ -10,6 +10,15 @@
 2. Abstract Factory_20190717
 3. Adapter_20190719
 
+## オンラインのコード実行環境
+https://www.codechef.com/ide  
+※[https://qiita.com/tttamaki/items/2b009aa957cfa4895d50]一覧
+
+## TODO
+* ノウハウ管理をWebアプリで実施する  
+→djangoで作成する。
+
+
 ---
 # 2019/7/20
 ## django
