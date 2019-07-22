@@ -10,10 +10,186 @@
 2. Abstract Factory_20190717
 3. Adapter_20190719
 
-## オンラインのコード実行環境
-https://www.codechef.com/ide  
-※[https://qiita.com/tttamaki/items/2b009aa957cfa4895d50]一覧
+## Java
+### Chain of Responsibilityパターンについて  
+[参考]https://qiita.com/mk777/items/7a8f23d3e58d77486fe4
+* 処理の要求元と実行クラスとをうまい感じにマッピングするデザインパターン。
+* 要求された処理をどのクラスが担当するのかという判定方法を、処理実行クラスの基底クラスで定義する。  
+具体的には、  
+1. 「自分が処理の担当である」
+2. 「別のクラスが処理の担当である」
+3. 「処理の担当が実装されていない」  
+を判断する。
 
+### 概要  
+1. MyAppは他のクラスに対して処理を振り分け、要求する
+```java
+class MyApp {
+
+    public MyApp(){
+        Foo foo = new Foo();
+        Baa baa = new Baa();
+        Qux qux = new Qux();
+    };
+
+    // Hogeをするメソッド
+    public doHoge(int arg){
+        // 引数の値の大きさによって、実行するクラスを分ける
+        if (0 <= arg < 5) {
+            foo.do();
+        } else if(5 <= arg < 10) {
+            baa.do();
+        } else {
+            qux.do();
+        }
+    };
+}
+```
+2. 上記のMyAppクラスには問題がある。
+* 処理の振り分け条件を変える場合、MyAppクラスを編集しなければならない  
+3. そこで、doHoge内で定義していた処理の振り分けを以下の様に切り分ける。
+```java
+public abstract class HogeHandler(){
+    
+    // 次に処理担当の判定を行うクラスを保持
+    private HogeHandler next;
+    
+    public HogeHandler setNext(HogeHander next) {
+        // 次に処理担当の判定を行うクラスを設定
+        this.next = next;
+    }
+    
+    public void support(inr arg){
+        if (this.isMyResponse(arg)) {
+            this.do();
+        } else if (this.next != null) {
+            // 責任は自分以外で、次の判定クラスがある
+            this.next.judge();
+        } else {
+            // 責任は自分以外で、次の判定クラスはない
+            this.fail;
+        }
+    }
+    
+    // 正常系処理実装用の抽象メソッド
+    protected void do();
+    
+    // 以上系処理実装用の中小メソッド
+    protected void fail();
+    
+    // 処理担当の判定用抽象メソッド
+    public abstract void isMyResponse(int arg);
+}
+```
+4. 抽象クラスで条件の受け皿と判定用メソッドを準備したため、  
+これを以下の様に継承して使用する
+```java
+public class Foo extends HogeHandler(){
+    private int limitLevel = 5;
+    
+    public Foo (){};
+    
+    @Override
+    protected boolean isMyResponce(int arg) {
+        if (arg < this.limitLevel) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    @Override
+    protected void do(){
+        System.out.println("Foo do.");
+    }
+    
+    @Override
+    protected void fail(){
+        System.out.println("Foo fail.")
+    }
+}
+```
+```java
+public class Baa extends HogeHandler(){
+    private int limitLevel = 10;
+    
+    public Baa (){};
+    
+    @Override
+    protected boolean isMyResponce(int arg) {
+        if (arg < this.limitLevel) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    @Override
+    protected void do(){
+        System.out.println("Baa do.");
+    }
+    
+    @Override
+    protected void fail(){
+        System.out.println("Baa fail.")
+    }
+}
+```
+```java
+public class Qux extends HogeHandler(){
+    private int limitLevel = 10;
+    
+    public Foo (){};
+    
+    @Override
+    protected boolean isMyResponce(int arg) {
+        if (10 <= arg) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    @Override
+    protected void do(){
+        System.out.println("Qux do.");
+    }
+    
+    @Override
+    protected void fail(){
+        System.out.println("Qux fail.")
+    }
+}
+```
+```java
+class MyApp {
+
+    public MyApp(){
+        Foo foo = new Foo();
+        Baa baa = new Baa();
+        Qux qux = new Qux();
+        
+        foo.setNext(baa).setNext(qux);
+    };
+
+    // Hogeをするメソッド
+    public doHoge(int arg){
+        foo.support(1);     // Foo do
+        foo.support(6);     // Baa do
+        foo.support(12);    // Qux do
+        foo.support(-23);   // Qux fail
+    };
+}
+```
+
+### 利点
+* MyAppは「処理を要求するだけ」になり、  
+振り分け方を変える場合は各HogeHandler実装クラスをいじるだけで良くなった。
+* メソッドチェーンがかっこいい
+
+### デメリット
+* 処理はFooから順に線形で回されるため、  
+処理実行クラスが増えるといちいち判定するので重くなる。
 ## TODO
 * ノウハウ管理をWebアプリで実施する  
 →djangoで作成する。
