@@ -1,5 +1,31 @@
-# 2019/7/22
+# 2019/7/23
 ## -7/20分の棚卸を行う事
+
+## 業務
+###  目標
+1. 作業着手前に、必要な要素と不確定な要素を明確にしておく。  
+2. デザインパターン 「**Singleton**」の理解と実装  
+
+* DP学習進捗
+1. Builder_20190716
+2. Abstract Factory_20190717
+3. Adapter_20190719
+4. Chain of Responsibility_20190722
+
+## django
+* function based view
+```python
+from django.shortcuts import render
+
+def hoge(request):
+    template_name = 'hoge.html'
+    model = HogeModel
+    context = {'hoge':100}
+    return render(request, template_name, context)
+```
+
+
+# 2019/7/22
 ## 業務
 ###  目標
 1. 作業着手前に、必要な要素と不確定な要素を明確にしておく。  
@@ -45,8 +71,9 @@ class MyApp {
     };
 }
 ```
-2. 上記のMyAppクラスには問題がある。
-* 処理の振り分け条件を変える場合、MyAppクラスを編集しなければならない  
+2. 上記のMyAppクラスには問題がある。  
+処理の振り分け条件を変える場合、MyAppクラスを編集しなければならない  
+
 3. そこで、doHoge内で定義していた処理の振り分けを以下の様に切り分ける。
 ```java
 public abstract class HogeHandler(){
@@ -74,14 +101,14 @@ public abstract class HogeHandler(){
     // 正常系処理実装用の抽象メソッド
     protected void do();
     
-    // 以上系処理実装用の中小メソッド
+    // 異常系処理実装用の抽象メソッド
     protected void fail();
     
-    // 処理担当の判定用抽象メソッド
+    // 処理担当の判定用の抽象メソッド
     public abstract void isMyResponse(int arg);
 }
 ```
-4. 抽象クラスで条件の受け皿と判定用メソッドを準備したため、  
+4. 上記抽象クラスにて条件の受け皿と判定用メソッドを準備したため、  
 これを以下の様に継承して使用する
 ```java
 public class Foo extends HogeHandler(){
@@ -139,7 +166,7 @@ public class Baa extends HogeHandler(){
 public class Qux extends HogeHandler(){
     private int limitLevel = 10;
     
-    public Foo (){};
+    public Qux (){};
     
     @Override
     protected boolean isMyResponce(int arg) {
