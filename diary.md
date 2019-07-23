@@ -12,6 +12,19 @@
 3. Adapter_20190719
 4. Chain of Responsibility_20190722
 
+## java
+### 標準メソッドの適切なラップ
+```java
+// String.equals()のぬるぽ回避
+exEquals(String str1, String str2){
+    return str1 != null ? str1.equals(str2) : str2 == null;
+}
+// これは他のString.〇〇にも使える
+```
+## javascript
+* 最新の構文に関する良さげな資料があった  
+https://jsprimer.net/
+
 ## django
 * function based view
 ```python
@@ -22,15 +35,6 @@ def hoge(request):
     model = HogeModel
     context = {'hoge':100}
     return render(request, template_name, context)
-```
-## java
-### 標準メソッドの適切なラップ
-```java
-// String.equals()のぬるぽ回避
-exEquals(String str1, String str2){
-    return str1 != null ? str1.equals(str2) : str2 == null;
-}
-// これは他のString.〇〇にも使える
 ```
 
 # 2019/7/22
