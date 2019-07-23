@@ -4,7 +4,7 @@
 ## 業務
 ###  目標
 1. 相手が何を求めているのか把握してからレスポンスを返す
-2. デザインパターン 「**Singleton**」の理解と実装  
+2. ~~デザインパターン 「**Singleton**」の理解と実装~~  
 →非推奨らしいのでやめた  
 2. デザインパターン 「**Facade**」の理解と実装
 
@@ -23,6 +23,84 @@ exEquals(String str1, String str2){
 }
 // これは他のString.〇〇にも使える
 ```
+### Facadeパターンについて  
+[参考]https://qiita.com/mk777/items/071ec30a1f7231029aae
+* 個々の処理をひとまとめにする窓口クラスを作る
+* Abstract FactoryパターンはFacadeの具体例の一つといえる
+
+### 概要  
+1. ヘッダー→本文→フッターという順番でメールを組み立てる機能があるとする
+```java
+class MyApp {
+    
+    public String createMail(){
+        MailMaker maker = new MailMaker();
+        maker.addHeader();
+        maker.addBody();
+        maker.addFooter();
+    }
+}
+```
+```java
+class MailMaker {
+    // ヘッダーを作る
+    public String addHeader(){};
+    // 本文を作る
+    public String addBody(){};
+    // フッターを作る
+    public String addFooter(){};
+}
+```
+2. 上記のMyAppクラスには問題がある。  
+* プログラム実装者が「ヘッダー」⇒「本文」⇒「フッター」という順番で  
+メソッドを呼び出すことを知らないかもしれない。
+* 呼び出す順番を変えたり、間に別のメソッドを挟み込みたくなった時に、  
+MyAppクラスを編集しなければならない。
+
+3. そこで、処理の呼び出し口としてのFacadeクラスを作成する
+```java
+class MyApp {
+
+    public void execute(){
+        MailMakeFacade facade = new MailMakeFacade();
+        facade.createMail();
+    }
+}
+```
+
+```java
+class MailMakeFacade(){
+    public String createMail(){
+        MailMaker maker = new MailMaker();
+        maker.addHeader();
+        maker.addBody();
+        maker.addFooter();
+    }
+}
+```
+
+```java
+class MailMaker {
+    // ヘッダーを作る
+    public String addHeader(){};
+    // 本文を作る
+    public String addBody(){};
+    // フッターを作る
+    public String addFooter(){};
+}
+```
+
+### 利点など
+* 上記の例はシンプルなのであまり実感できないが、  
+実際に複数のサブシステムを通過してデータを作成していく大規模なシステムの場合、  
+処理を呼び出す順番を実装者にいちいち考えさせるのは非効率であり、またバグの温床となる。
+(呼び出す順番の実装ミスなど)  
+* 窓口を設けることによって処理内容とクライアントを疎結合にできるため、  
+プログラムの柔軟性からみてもプラスとなる。
+* 「Abstract FactoryはFacadeの具体例」というのは、  
+Factoryクラスが「インスタンス生成処理をひとまとめで請け負う窓口」という意味で  
+ユーザーが「とりあえずFactoryを使っておけばインスタンス生成ができる」と考えることができるから。
+
 ## javascript
 * 最新の構文に関する良さげな資料があった  
 https://jsprimer.net/
