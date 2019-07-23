@@ -6,6 +6,13 @@
 1. 課題に対するアンテナを立てる(プロダクトのネタ
 2. デザインパターン 「**ほげ**」の理解と実装
 
+* DP学習進捗
+1. Builder_20190716
+2. Abstract Factory_20190717
+3. Adapter_20190719
+4. Chain of Responsibility_20190722
+5. Facade_20190723
+
 ## エディタ
 ### VSCode
 * Ctrl + B で左サイドバーの開閉
