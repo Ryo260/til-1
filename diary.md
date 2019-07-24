@@ -71,7 +71,7 @@ interface RobotPrototype extends Clonable{
     
 }
 ```
-上記Cloneableなinterfaceの実装クラス。  
+上記Cloneableなinterfaceの実装クラスRobot    
 Cloneableを継承していなければ例外が発生するため、キャッチする必要がある。
 ```java
 class Robot implements RobotPrototype {
@@ -106,7 +106,7 @@ class Client {
     private hashMap<String, RobotPrototype> registry
 
     public Client(){
-     this.registry = new HashMap<>();
+        this.registry = new HashMap<>();
     }
 
     // 辞書へインスタンスを保存するメソッド
