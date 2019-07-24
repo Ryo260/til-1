@@ -155,6 +155,9 @@ class RoboController {
 同じようなFactoryを量産する場合にPrototypeを組み合わせられそう。
 * Clientで「辞書として保持」しているのが好み
 
+## thymeleafについて
+* 利点：サーバーが起動していなくても静的なhtmlとして読み込むことができる
+
 ## エディタ
 ### VSCode
 * Ctrl + B で左サイドバーの開閉
