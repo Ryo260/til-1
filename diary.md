@@ -1,5 +1,5 @@
 #### -7/20分の棚卸を行う事
-#### https://www.techscore.com/tech/DesignPattern/Prototype.html/デザインパターン一覧の参考
+#### [デザインパターン一覧の参考]https://www.techscore.com/tech/DesignPattern/Prototype.html/
 
 # 2019/7/24
 ## 業務
@@ -57,7 +57,7 @@ class Robot {
     }
 }
 ```
-3. 上記の対策として、Robotの完成品をコピーすることで10体を揃えるようにする。  
+3. 対策として、Robotの完成品をコピーすることで10体を揃えるようにする。  
 こうすることにより、9体分の組み立てコスト削減が見込める。  
 オブジェクトのディープコピーは、以下のような実装となる。  
 ```java
@@ -71,7 +71,7 @@ interface RobotPrototype extends Clonable{
     
 }
 ```
-上記Cloneableなinterfaceの実装クラスRobot    
+上記Cloneableを継承したinterfaceの実装クラスRobot    
 Cloneableを継承していなければ例外が発生するため、キャッチする必要がある。
 ```java
 class Robot implements RobotPrototype {
