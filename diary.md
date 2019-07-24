@@ -163,6 +163,49 @@ class RoboController {
 * Ctrl + B で左サイドバーの開閉
 * Ctrl + Tab でエディタのタブ切り替え
 
+## python週次
+
+```python
+# フォーマット文字列リテラル
+testDict = {'foo':1, 'baa':2, 'qux':3}
+for x , y in testDict.items():
+    print(f'Key:{x}, Value:{y}')
+```
+```python
+# generator式
+generator = ((x, y) for x, y in zip(range(1, 1000), range(200, 300)))
+for x, y in generator:
+    print(x,y)
+
+# generator関数
+def generate_ints(number):
+    for index in range(number):
+        yield index
+
+genfunc = generate_ints(3)
+genfunc.__next__()
+```
+yeildはreturnと同じように値を返すが、**オブジェクトの状態を保持する**  
+→続きから値を取得することができる  
+```python
+def generate_ints(number):
+    multiple = 1
+    for index in range(number):
+        value = (yield index * multiple)
+
+        if value is None:
+            multiple = 1
+        else:
+            multiple = value
+
+if __name__ == '__main__':
+    funcgen = generate_ints(3)
+    print(next(funcgen))
+    print(funcgen.send(10))
+    print(funcgen.send(-10))
+```
+
+
 # 2019/7/23
 ## 業務
 ### 目標
