@@ -1,7 +1,7 @@
-#### -7/20分の棚卸を行う事
-#### [デザインパターン一覧の参考]https://www.techscore.com/tech/DesignPattern/Prototype.html/
-#### [単体テストの参考]https://qiita.com/disc99/items/177bdf6352de463fdc87
-
+##### -7/20分の棚卸を行う事
+##### [デザインパターン一覧の参考]https://www.techscore.com/tech/DesignPattern/Prototype.html/
+##### [単体テストの参考]https://qiita.com/disc99/items/177bdf6352de463fdc87
+---
 # 2019/7/24
 ## 業務
 ### 目標
