@@ -1,4 +1,5 @@
-## -7/20分の棚卸を行う事
+#### -7/20分の棚卸を行う事
+#### https://www.techscore.com/tech/DesignPattern/Prototype.html/デザインパターン一覧の参考
 
 # 2019/7/24
 ## 業務
