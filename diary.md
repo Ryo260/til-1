@@ -65,7 +65,7 @@ class Robot {
 // ディープコピーをサポートしているjava標準のinterface
 import java.lang.Cloneable;
 
-interface RobotPrototype extends Clonable{
+interface RobotPrototype extends Cloneable{
     
     // コピー用の抽象メソッド
     public abstract RobotPrototype createClone();
