@@ -17,6 +17,143 @@
 4. Chain of Responsibility_20190722
 5. Facade_20190723
 
+### Prototypeパターンについて  
+[参考]https://www.techscore.com/tech/DesignPattern/Prototype.html/
+* 一度生成したインスタンスをコピーして使いまわす
+* ざっくり言うと、new()を使わずにインスタンスを生成する
+
+### 概要  
+1. RoboControllerは10体のロボットを使役する
+```java
+class RoboController {
+    public void execute(){
+        Robot robo01 = new Robot();
+        Robot robo02 = new Robot();
+        Robot robo03 = new Robot();
+        Robot robo04 = new Robot();
+        Robot robo05 = new Robot();
+        Robot robo06 = new Robot();
+        Robot robo07 = new Robot();
+        Robot robo08 = new Robot();
+        Robot robo09 = new Robot();
+        Robot robo10 = new Robot();
+    }
+}
+```
+2. RoboControllerクラスには１つ問題があった。  
+Robotを組み立てる工程が複雑であり、10体揃えるために時間が掛かってしまう。  
+```java
+class Robot {
+    public Robot(){
+    
+        // action001-689が組み立てるためのメソッド
+        // 1メソッドあたり4秒程度かかる、コストの重い処理
+        action001(){}
+        action002(){}
+        //
+        // ...
+        //
+        action689(){}
+    }
+}
+```
+3. 上記の対策として、Robotの完成品をコピーすることで10体を揃えるようにする。  
+こうすることにより、9体分の組み立てコスト削減が見込める。  
+オブジェクトのディープコピーは、以下のような実装となる。  
+```java
+// ディープコピーをサポートしているjava標準のinterface
+import java.lang.Cloneable;
+
+interface RobotPrototype extends Clonable{
+    
+    // コピー用の抽象メソッド
+    public abstract RobotPrototype createClone();
+    
+}
+```
+上記Cloneableなinterfaceの実装クラス。  
+Cloneableを継承していなければ例外が発生するため、キャッチする必要がある。
+```java
+class Robot implements RobotPrototype {
+    
+    public Robot(){
+    
+        action001(){}
+        action002(){}
+        //
+        // ...
+        //
+        action689(){}
+    }
+    
+    @Override
+    public RobotPrototype createClone() {
+        RobotPrototype proto = null;
+        try {
+            proto = (RobotPrototype).clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return proto;
+    }
+}
+```
+一度生成したインスタンスを保持、コピーするClientクラスを用意する
+```java
+class Client {
+
+    // インスタンス名とインスタンスを辞書として保持する
+    private hashMap<String, RobotPrototype> registry
+
+    public Client(){
+     this.registry = new HashMap<>();
+    }
+
+    // 辞書へインスタンスを保存するメソッド
+    public void register(String name, RobotPrototype proto) {
+        this.registry.put(name, proto);
+    }
+    
+    // インスタンスをコピーするメソッド
+    public RobotPrototype create(String name) {
+        RobotPrototype proto = (RobotPrototype) registry.get(name);
+        return proto.createClone();
+    }
+}
+```
+以上で実装した機構を利用する実行クラスRoboController
+```java
+class RoboController {
+    public void execute(){
+        
+        // Clientの生成
+        Client client = new Client();
+        
+        // 1体目のRobot生成
+        Robot robo01 = new Robot();
+        
+        // 1体目のRobotをClientに登録
+        client.register("proto", robo01);
+        
+        // あとはコピーを生成
+        RobotPrototype robo02 = client.create("proto");
+        RobotPrototype robo03 = client.create("proto");
+        RobotPrototype robo04 = client.create("proto");
+        RobotPrototype robo05 = client.create("proto");
+        RobotPrototype robo06 = client.create("proto");
+        RobotPrototype robo07 = client.create("proto");
+        RobotPrototype robo08 = client.create("proto");
+        RobotPrototype robo09 = client.create("proto");
+        RobotPrototype robo10 = client.create("proto");
+    }
+}
+```
+### 利点など
+* 利点は上述の通り。めちゃくちゃ便利そう。
+* Abstract Factoryパターンは「複数のFactory」を作るデザインなので、  
+同じようなFactoryを量産する場合にPrototypeを組み合わせられそう。
+* Clientで「辞書として保持」しているのが好み
+
 ## エディタ
 ### VSCode
 * Ctrl + B で左サイドバーの開閉
