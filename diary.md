@@ -1,6 +1,7 @@
 ##### -7/20分の棚卸を行う事
 ##### [デザインパターン一覧]https://www.techscore.com/tech/DesignPattern/index.html/
 ##### [単体テストの参考]https://qiita.com/disc99/items/177bdf6352de463fdc87
+#### [google clab]https://colab.research.google.com/notebooks/welcome.ipynb?hl=ja#scrollTo=qQc1tl1ZUwCM
 ---
 # 2019/7/25
 ## 業務
