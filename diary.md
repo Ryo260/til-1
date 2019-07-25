@@ -51,6 +51,49 @@ switch(condition == null ? "" : condition){
 }
 ```
 
+### Iteratorパターンについて  
+[参考]https://53ningen.com/iterator-pattern/
+* 「コレクション」に分類されるデータ構造に対して、抽象的な走査手段を提供する
+* プログラムを仕様変更に強くする典型（と捉えた）
+
+### 概要  
+1. 現行の図書検索システムMyAppは「配列」で本を管理していた
+```java
+class MyApp {
+    
+    private Book[] books;
+    
+    // シーケンスで本を走査する
+    public Book checkBooks(int seqence){
+        for (int i = 0; i < books.length(); i++ ) {
+            if (i == sequence) {
+                return this.books[i];
+            }
+        }
+    }
+}
+```
+2. 新しい図書検索システムとして、「辞書」で本を管理したいらしい。  
+しかし、辞書型はインデックス番号を持たないのでforループが使えない。  
+→ MyAppクラスを改修しなければならない...。  
+
+```java
+    private HashMap<String, Book> books;
+    
+    // 今までの方法じゃ走査できない...
+    /** 
+    public Book checkBooks(int seqence){
+        for (int i = 0; i < books.length(); i++ ) {
+            if (i == sequence) {
+                return this.books[i];
+            }
+        }
+    }
+    */
+```
+3. データ構造と走査方法が密に結合していると、上記のような問題が起こる。  
+そこで、これらを分離する方法を考える(いわゆる「疎結合」)  
+
 ## AWS  
 Amazon Web Services  
 クラウド上でサーバーやネットワークを構築できる。
