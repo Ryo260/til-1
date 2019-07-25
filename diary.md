@@ -2,6 +2,21 @@
 ##### [デザインパターン一覧]https://www.techscore.com/tech/DesignPattern/index.html/
 ##### [単体テストの参考]https://qiita.com/disc99/items/177bdf6352de463fdc87
 ---
+# 2019/7/26
+## 業務
+### 目標
+1.   
+2. デザインパターン 「**ほげ**」の理解と実装
+
+* DP学習進捗
+1. Builder_20190716
+2. Abstract Factory_20190717
+3. Adapter_20190719
+4. Chain of Responsibility_20190722
+5. Facade_20190723
+6. Prototype_20190724
+7. Iterator_20190725
+
 # 2019/7/25
 ## 業務
 ### 目標
@@ -94,7 +109,7 @@ class MyApp {
 そこで、これらを分離する方法を考える(いわゆる「疎結合」)  
 用意するべき要素は以下の通り。  
     * 本をまとめ、順番や数を管理する自前の拡張コレクション(Aggregate)
-    * Aggregateを捜査する機能を持つinterface(Iterator)
+    * Aggregateを走査する機能を提供するinterface(Iterator)
 
 汎用的な概念のため、抽象クラスを用意
 ```java
