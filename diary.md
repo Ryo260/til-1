@@ -17,6 +17,36 @@
 5. Facade_20190723
 6. Prototype_20190724
 
+## java
+### メモ
+* switch文の条件式と3項演算子  
+**switch(null)はぬるぽになる**
+```java
+// NullPointerException
+final String condition = null;
+switch(condition){
+ case foo:
+ case baa:
+   // すごい処理
+ default:
+   // 処理
+}
+```
+**コーディング規約で3項演算子が禁止されていないなら**、下記が良い感じでは。
+```java
+// 7/23の応用
+final String condition = null;
+
+// 条件式にnullが入った場合は空文字へ変換
+switch(condition == null ? "" : condition){
+ case foo:
+ case baa:
+   // すごい処理
+ default:
+   // 処理
+}
+```
+
 ## AWS  
 Amazon Web Services  
 クラウド上でサーバーやネットワークを構築できる。
@@ -294,7 +324,8 @@ http://blog.yuyat.jp/archives/1500**
 4. Chain of Responsibility_20190722
 
 ## java
-### 標準メソッドの適切なラップ
+### メモ
+* 標準メソッドの適切なラップ
 ```java
 // String.equals()のぬるぽ回避
 exEquals(String str1, String str2){
