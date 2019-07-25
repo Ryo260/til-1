@@ -20,7 +20,8 @@
 ## java
 ### メモ
 * switch文の条件式と3項演算子  
-**switch(null)はぬるぽになる**
+**switch(null)はぬるぽになる**  
+※switch(<String>)は、内部でString#equals()しているらしい。  
 ```java
 // NullPointerException
 final String condition = null;
@@ -28,6 +29,7 @@ switch(condition){
  case foo:
  case baa:
    // すごい処理
+   break;
  default:
    // 処理
 }
@@ -42,6 +44,7 @@ switch(condition == null ? "" : condition){
  case foo:
  case baa:
    // すごい処理
+   break;
  default:
    // 処理
 }
