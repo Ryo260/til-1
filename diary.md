@@ -1,12 +1,21 @@
 ##### -7/20分の棚卸を行う事
-##### [デザインパターン一覧の参考]https://www.techscore.com/tech/DesignPattern/Prototype.html/
+##### [デザインパターン一覧]https://www.techscore.com/tech/DesignPattern/index.html/
 ##### [単体テストの参考]https://qiita.com/disc99/items/177bdf6352de463fdc87
 ---
 # 2019/7/25
 ## 業務
 ### 目標
-1. 
-2. デザインパターン 「**ほげ**」の理解と実装
+1. テストコードを書いてローカルで動かす。  
+ → テスト自動化のイメージを作る。  
+2. デザインパターン 「**Itarator**」の理解と実装
+
+* DP学習進捗
+1. Builder_20190716
+2. Abstract Factory_20190717
+3. Adapter_20190719
+4. Chain of Responsibility_20190722
+5. Facade_20190723
+6. Prototype_20190724
 
 ## AWS  
 Amazon Web Services  
@@ -45,12 +54,12 @@ Amazon Web Services
     利点は、初期コストが少なく、すぐに利用開始が可能で、  
     サーバーの増減が自由にできること。  
     欠点は、費用の予測が付きにくいことと、  
-    クラウド全体で障害が起こると対応しようがなくなること。
-    <br>  
-    対義語は「オンプレミス」  
-    オンプレミスとは、インフラを自前で用意して、  
-    自社で所有・管理すること。  
-    オンプレミスの利点は、自由度が高いこと。  
+    クラウド全体で障害が起こると対応しようがなくなること。  
+    対義語は「オンプレミス」
+    
+    5. オンプレミスとは  
+    インフラを自前で用意して、自社で所有・管理すること。  
+    利点は、設定などの自由度が高いこと。  
     欠点は、初期コストがかかり、調達期間が必要で、  
     サーバーの増減がしにくいこと。  
 
@@ -72,7 +81,6 @@ Amazon Web Services
 3. Adapter_20190719
 4. Chain of Responsibility_20190722
 5. Facade_20190723
-6. Prototype_20190724
 
 ### Prototypeパターンについて  
 [参考]https://www.techscore.com/tech/DesignPattern/Prototype.html/
