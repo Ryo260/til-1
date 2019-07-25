@@ -1,7 +1,6 @@
 ##### -7/20分の棚卸を行う事
 ##### [デザインパターン一覧]https://www.techscore.com/tech/DesignPattern/index.html/
 ##### [単体テストの参考]https://qiita.com/disc99/items/177bdf6352de463fdc87
-#### [google clab]https://colab.research.google.com/notebooks/welcome.ipynb?hl=ja#scrollTo=qQc1tl1ZUwCM
 ---
 # 2019/7/25
 ## 業務
@@ -93,6 +92,109 @@ class MyApp {
 ```
 3. データ構造と走査方法が密に結合していると、上記のような問題が起こる。  
 そこで、これらを分離する方法を考える(いわゆる「疎結合」)  
+用意するべき要素は以下の通り。  
+    * 本をまとめ、順番や数を管理する自前の拡張コレクション(Aggregate)
+    * Aggregateを捜査する機能を持つinterface(Iterator)
+
+汎用的な概念のため、抽象クラスを用意
+```java
+interface Aggregate {
+    public abstract Iterator iterator();
+}
+```
+```java
+interface Iterator {
+    public abstract boolean hasNext();
+    public abstract Object next();
+}
+```
+「本の管理に特化したクラス」を、上記抽象クラスの具象クラスとして実装
+```java
+class BookShelf implements Aggregate {
+
+    // 配列を拡張するイメージ
+    private Book[] books;
+    private int last = 0;
+    
+    public BookShelf(int maxsize) {
+        this.books = new Book[maxsize];
+    }
+    
+    public Book getBookAt(int index) {
+        return books[index];
+    }
+    
+    public void appendBook(Book book) {
+        this.books[last] = book;
+        last++;
+    }
+    
+    public int getLength() {
+        return last;
+    }
+    
+    @Override
+    public Iterator iterator() {
+        return new BookShelfIterator(this);
+    }
+}
+```
+「本の管理に特化したクラス」を使用するためのIterator具象クラス
+```java
+class BookShelfIterator implements Iterator {
+    private BookShelf bookShelf;
+    private int index;
+    
+    public BookShelfIterator(BookShelf bookShelf) {
+        this.bookShelf = bookShelf;
+        this.index = 0;
+    }
+    
+    @Override
+    public boolean hasNext() {
+        if (index < bookShelf.getLength()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    @Override
+    public Object next() {
+        Book book = bookShelf.getBookAt(index);
+        index++;
+        return book;
+    }
+}
+```
+以上の機構を利用するMyApp。  
+コレクションの構造はBookShelfに切り分けされているので、  
+もしその使い方が変わってもMyAppではwhile(bookShelf.hasNext())するだけでOK  
+```java
+class MyApp {
+    
+    BookShelf bookShelf = new BookShelf(5);
+    
+    bookShelf.appendBook(new Book());
+    bookShelf.appendBook(new Book());
+    bookShelf.appendBook(new Book());
+    bookShelf.appendBook(new Book());
+    bookShelf.appendBook(new Book());
+    
+    Iterator iterator = bookShelf.iterator();
+    
+    while (iterator.hasNext()) {
+        Book book = (Book)iterator.next();
+        // 本に対する処理
+    }
+}
+```
+### 利点など
+* 正直なところ、あまり理解できていない。  
+ひとまず、ループ処理を「ループ実行側」ではなく「被ループ側」に  
+依存させることで、データ構造の変化を吸収しやすくする、と考えておく。
+* つまり、「ループの実行方法」は変えずに「ループの挙動」を変更させることができる。  
+※コレクションのダックタイピング
 
 ## AWS  
 Amazon Web Services  
