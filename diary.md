@@ -7,7 +7,7 @@
 ## 業務
 ### 目標
  1. ~~パソコン買う~~
- 2. ~~化石PCにLinux mintを入れる  ~~
+ 2. ~~化石PCにLinux mintを入れる~~  
  https://www.toma-g.net/entry/linux_mint_18_x205ta
 3. X205TAはLinux mintと相性が悪いので、  
 Ubuntu16にした。  
