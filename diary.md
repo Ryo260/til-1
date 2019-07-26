@@ -6,7 +6,9 @@
 * 朝起きたらノートパソコンが机の上で水没して死んでた...
 ## 業務
 ### 目標
- 1. パソコン買う
+ 1. ~~パソコン買う~~
+ 2. 化石PCにLinux mintを入れる  
+ https://www.toma-g.net/entry/linux_mint_18_x205ta
 
 * DP学習進捗
 1. Builder_20190716
