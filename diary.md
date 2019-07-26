@@ -72,6 +72,15 @@ https://dev.classmethod.jp/cloud/amazon-s3-bucket-name-rule/
 * S3(エススリー)：データストレージサービス(有料)
 * S3バケット：ストレージの名前（フォルダ名みたいなもの）
 
+### VPCネットワークの構築
+#### AWS VPCとは
+* AWSのサービスの一つ。  
+Virtual Private Cloud で「VPC」  
+クラウド環境で仮想ネットワークを構築する。  
+AWSで使用するリソースは。このVPCへ配置していくことになる。  
+[参考]https://qiita.com/uenohara/items/f7c11995568030d79533
+
+
 
 # 2019/7/25
 ## 業務
