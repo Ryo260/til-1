@@ -2,6 +2,13 @@
 ##### [デザインパターン一覧]https://www.techscore.com/tech/DesignPattern/index.html/
 ##### [単体テストの参考]https://qiita.com/disc99/items/177bdf6352de463fdc87
 ---
+# 7/28
+## django
+```python
+
+```
+* 例外処理をロジックとして使わないで欲しい。
+
 # 2019/7/26
 * 朝起きたらノートパソコンが机の上で水没して死んでた...
 ## 業務
