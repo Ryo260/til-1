@@ -2,7 +2,15 @@
 ##### [デザインパターン一覧]https://www.techscore.com/tech/DesignPattern/index.html/
 ##### [単体テストの参考]https://qiita.com/disc99/items/177bdf6352de463fdc87
 ---
-# 7/28
+# 2019/7/29
+## 業務
+### 目標
+1. テストケースを考えてから実装する(なんちゃってTDD)
+2. デザインパターン 「**ほげ**」の理解と実装
+
+
+---
+# 2019/7/28
 ## django
 ```python
 
