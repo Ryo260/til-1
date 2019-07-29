@@ -13,7 +13,26 @@
 * 「状態」とそれに依存する処理を取りまとめたクラスを作り、ロジックから分離させる
 
 ### 概要  
-1. 
+1. 指定された図書について、書籍の貸し出し状況を表示するMyApp
+```java
+class MyApp(){
+ 
+  public void displayBookStatus(Book book){
+    if (book.state == "exist") {
+      // 在庫あり
+      system.out.println("exist");
+    }
+    if (book.state == "lent") {
+      // 貸し出し中
+      system.out.println("lent")
+    }
+  }
+}
+```
+2. 書籍の貸し出し状態として「所在不明」を追加したいとき、  
+MyAppクラスを編集しなければならない。  
+MyAppクラスを編集すると、exist/lentへの影響を考えて再テストが必要になる。  
+そこで、以下のように書籍の「状態」を分離する。
 
 ## 統計
 ### 用語
