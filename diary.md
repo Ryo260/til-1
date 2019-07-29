@@ -31,8 +31,32 @@ class MyApp(){
 ```
 2. 書籍の貸し出し状態として「所在不明」を追加したいとき、  
 MyAppクラスを編集しなければならない。  
-MyAppクラスを編集すると、exist/lentへの影響を考えて再テストが必要になる。  
+※Bookにもstateを追加する必要がある。
+```java
+class MyApp(){
+ 
+  public void displayBookStatus(Book book){
+    if (book.state == "exist") {
+      // 在庫あり
+      system.out.println("exist");
+    }
+    if (book.state == "lent") {
+      // 貸し出し中
+      system.out.println("lent")
+    }
+    if (book.state == "missing") {
+      // 所在不明
+      system.out.println("missing");
+    }
+  }
+}
+```
+3. MyAppクラスを編集すると、既存の処理に対する影響を考えて再テストが必要になる。  
 そこで、以下のように書籍の「状態」を分離する。
+```java
+```
+
+
 
 ## 統計
 ### 用語
