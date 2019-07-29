@@ -38,15 +38,15 @@ class MyApp(){
   public void displayBookStatus(Book book){
     if (book.state == "exist") {
       // 在庫あり
-      system.out.println("exist");
+      System.out.println("exist");
     }
     if (book.state == "lent") {
       // 貸し出し中
-      system.out.println("lent")
+      System.out.println("lent")
     }
     if (book.state == "missing") {
       // 所在不明
-      system.out.println("missing");
+      System.out.println("missing");
     }
   }
 }
@@ -54,8 +54,93 @@ class MyApp(){
 3. MyAppクラスを編集すると、既存の処理に対する影響を考えて再テストが必要になる。  
 そこで、以下のように書籍の「状態」を分離する。
 ```java
+interface State {
+  void displayState();
+}
 ```
+```java
+class Exist implements State {
+  @Override displayState(){
+    System.out.println("exist");
+  }
+}
+```
+```java
+class Lent implements State {
+  @Override displayState(){
+    System.out.println("lent");
+  }
+} 
+```
+```java
+class Missing implements State {
+  @Override displayState(){
+    System.out.println("missing");
+  }
+}
+```
+* 上記にてクラス単位に分離した「状態」を取りまとめ、保持するクラスを用意する
+```java
+class Context {
+  
+  // 状態を保持するクラス変数
+  private State state;
 
+  public Context(){
+    Exist exist = new Exist();
+    Lent lent = new Lent();
+    Mising missing = new Missing();
+    
+    // 初期設定
+    this.state = exist;
+  }
+  
+  /**
+   * 状態の変更
+   */
+  public void changeState(String state) {
+    switch (state) {
+      case "exist":
+        this.state = exist;
+        break;
+      case "lent":
+        this.state = lent;
+        break;
+      case "missing":
+        this.state = missing;
+        break;
+      case default:
+        break;
+    } 
+  }
+  
+  /**
+   * 処理のディスパッチ
+   */
+  public void displayState() {
+    // このメソッドが呼ばれた時点で保持している「状態」のdisplayState()を実行する
+    this.state.displayState();
+  }
+}
+```
+以上の機構を利用したMyApp
+```java
+class MyApp {
+  Context context = new Context();
+  context.displayState();
+  // existが出力
+  
+  context.changeState("lent");
+  context.displayState();
+  // lentが出力
+  
+  context.changeState("missing");
+  context.displayState();
+  // missingが出力
+}
+```
+状態が追加されても既存のロジックに影響を与えないため、  
+テスト範囲を限定することができる。
 
 
 ## 統計
