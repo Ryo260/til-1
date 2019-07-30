@@ -28,15 +28,18 @@ https://qiita.com/ritukiii/items/de30b2d944109521298f
 ### 概要  
 1. 
 
-
-
 ## 統計
 * 独立　⇔　従属
 
 ## AWS
 ### cloud9
 * pythonのデフォルトが2.7らしいので3にアップデートすること。  
-[参考]https://qiita.com/rmiyamoto/items/4143c6081fb664208e06
+[参考]https://qiita.com/acecrc/items/fb34a12b265122816d4b  
+1. ~/.bashrcのpythonを更新
+2. ~/.bashrcをsourceから実行
+3. upgradeする  
+??よくわかっていないので、意味を調べること。
+
 * cloud9-shiiba作成  
 * Cloud9とEC2の権限だけを持つIAMユーザー cloud9-shiibaを作成  
 * 東京リージョンでCloud9を作成
