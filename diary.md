@@ -27,12 +27,15 @@
 DIと同一の概念ではないということ。  
 https://qiita.com/ritukiii/items/de30b2d944109521298f  
 
+### 作って覚えるDIコンテナ  
+http://nowokay.hatenablog.com/entry/20160406/1459918560
+
 ### Compositeパターンについて  
 [参考]https://qiita.com/takehiro224/items/e8ebc98d4eff29d3805c
 * 階層的な構造をもつオブジェクトを抽象化し、親子を同一視する。
 
 ### 概要  
-1. 
+1. 帰ったら書く
 
 ## 統計
 * 独立　⇔　従属
