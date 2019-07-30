@@ -35,7 +35,12 @@ https://qiita.com/ritukiii/items/de30b2d944109521298f
 
 ## AWS
 ### cloud9
-* pythonのデフォルトが2.7らしいので3にアップデートすること。
+* pythonのデフォルトが2.7らしいので3にアップデートすること。  
+[参考]https://qiita.com/rmiyamoto/items/4143c6081fb664208e06
+* cloud9-shiiba作成  
+* Cloud9とEC2の権限だけを持つIAMユーザー cloud9-shiibaを作成  
+* 東京リージョンでCloud9を作成
+
 
 ### VPCの作成
 1. VPCを作成する  
