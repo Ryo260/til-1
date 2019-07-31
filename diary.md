@@ -26,6 +26,9 @@ https://qiita.com/higu1988/items/3a9c4fe528c2388bdc7f
 $ git config --global user.name ""
 $ git config --global user.email ""
 ```
+* cloud9でpipコマンドを打つと「アップグレードしろ」  
+* sudoでアップグレードすると動かなくなるので、--userで実行すること
+
 
 # 2019/7/30
 
