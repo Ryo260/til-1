@@ -24,6 +24,13 @@ Webページのリンクをたどり、Webページの情報を収集するこ�
 * 定期的にアップデートされる情報の自動取得
 * 自動で特定の種類のデータを収集する  
 
+## AWS
+#### gitの初期設定おさらい
+```
+$ git config --global user.name ""
+$ git config --global user.email ""
+```
+
 # 2019/7/30
 
 ## 業務
