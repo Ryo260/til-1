@@ -1,5 +1,6 @@
 ##### [デザインパターン一覧]https://www.techscore.com/tech/DesignPattern/index.html/
 ##### [単体テストの参考]https://qiita.com/disc99/items/177bdf6352de463fdc873
+$*22272185288 zero first  
 ##### 現場変わった時に聞くことリスト  
 1. インターネット利用の可否  
 利用できる場合の制約  
