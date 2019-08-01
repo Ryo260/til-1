@@ -14,8 +14,8 @@ $*22272185288 zero first
 * 複雑
 ##### 考え方
 * 駆動表で分割して整理する。  
-結局、どんな複雑だとしても  
-SELECT - FROM - WHERE  
+結局、どんなに複雑なSQLだったとしても、  
+「SELECT - FROM - WHERE」  
 であることに変わりはない。
 
 #### Play Framework
