@@ -2,6 +2,23 @@
 ##### [単体テストの参考]https://qiita.com/disc99/items/177bdf6352de463fdc873
 $*22272185288 zero first  
 ---
+# 2019/8/1
+## 業務
+### 目標
+1. SQL改修のコツを考える
+2. Play Frameworkの概要を把握する
+
+#### SQL改修のコツ
+##### 改修対象
+* 長い
+* 複雑
+
+##### Play Framework
+* 環境構築  
+https://qiita.com/yuichi0301/items/4785e3fe490736d4ee50
+* ハンズオン  
+https://qiita.com/yuichi0301/items/ead86d0251b954f07935
+
 # 2019/7/31
 ## 業務
 ### 目標
