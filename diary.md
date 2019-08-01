@@ -12,8 +12,13 @@ $*22272185288 zero first
 ##### 改修対象
 * 長い
 * 複雑
+##### 考え方
+* 駆動表で分割して整理する。  
+結局、どんな複雑だとしても  
+SELECT - FROM - WHERE  
+であることに変わりはない。
 
-##### Play Framework
+#### Play Framework
 * 環境構築  
 https://qiita.com/yuichi0301/items/4785e3fe490736d4ee50
 * ハンズオン  
